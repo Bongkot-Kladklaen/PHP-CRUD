@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('.view_data').click(function(){
         var uid = $(this).attr('id');
         $.ajax({
-            url:"process/select.php",
+            url:"controller/select.php",
             method:"post",
             data:{id:uid},
             success:function(data){
@@ -15,7 +15,7 @@ $(document).ready(function(){
     $("#insert-form").on("submit",function(event){
         event.preventDefault();
         $.ajax({
-            url:"process/insert.php",
+            url:"controller/insert.php",
             method:"post",
             data:$('#insert-form').serialize(),
             beforeSend:function(){
@@ -37,7 +37,7 @@ $(document).ready(function(){
             buttons: {
                 confirm: function () {
                     $.ajax({
-                        url:"process/delete.php",
+                        url:"controller/delete.php",
                         method:"post",
                         data:{id:uid},
                         success:function(data){
@@ -54,7 +54,7 @@ $(document).ready(function(){
     $(".edit_data").click(function(){
         var uid = $(this).attr('id');
         $.ajax({
-            url:"process/fetch.php",
+            url:"controller/fetch.php",
             method:"post",
             data:{id:uid},
             dataType:"json",
@@ -65,9 +65,11 @@ $(document).ready(function(){
                 $("#email").val(data.email);
                 $("#web").val(data.web);
                 $('#insert_modal').modal('show');
-                // location.reload();
             }
         });
+        $(".reset-data").click(function(){
+            location.reload();
+        });
     });
-
+    
 });

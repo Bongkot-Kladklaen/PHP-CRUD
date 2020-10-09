@@ -9,10 +9,10 @@
     $email = $_POST['email'];
     $web = $_POST['web'];
     
-    if ($id != '') {
-        $query = "UPDATE $table SET fname='$fname',lname='$lname',email='$email',web='$web' WHERE id=$id";
-    } else {
+    if ($id == "") {
         $query = "INSERT INTO $table(fname,lname,email,web) VALUES('$fname','$lname','$email','$web')";
+    } else {
+        $query = "UPDATE $table SET fname='$fname',lname='$lname',email='$email',web='$web' WHERE id=$id";
     }
     
     $conn->insert($query);
